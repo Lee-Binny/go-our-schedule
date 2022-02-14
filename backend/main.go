@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-our-schedule/db"
 	"go-our-schedule/controllers"
+	"go-our-schedule/db"
 	"log"
 )
 
@@ -27,7 +27,7 @@ func main()  {
 		user.GET("/", controllers.GetAllUsers) // 전체 유저 조회
 		user.GET(":id", controllers.GetOneUser) // id로 유저 조회
 		user.GET("/search/:name", controllers.GetOneUserByName) // name 유저 조회
-		user.POST("/signup", controllers.SignUp) // 회원가입
+		user.POST("/", controllers.SignUp) // 회원가입
 		user.POST("/signin", controllers.SignIn) // 로그인
 		user.GET("/logout", controllers.Logout) // 로그아웃
 	}

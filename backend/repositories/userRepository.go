@@ -19,14 +19,14 @@ func GetOneUser(id int64) (*models.User, error) {
 
 func GetOneUserByUid(uid string) (*models.User, error) {
 	user := models.User{}
-	err := db.DB.Where("uid = ?", uid).First(&user).Error
+	err := db.DB.Where("user_id = ?", uid).First(&user).Error
 	return &user, err
 }
 
-func GetOneUserByName(name string) (*models.Users, error) {
-	users := models.Users{}
-	err := db.DB.Where("name = ?", name).Find(&users).Error
-	return &users, err
+func GetOneUserByName(name string) (*models.User, error) {
+	user := models.User{}
+	err := db.DB.Where("name = ?", name).Find(&user).Error
+	return &user, err
 }
 
 func GetUsersName(id []int64) (*models.Users, error) {
