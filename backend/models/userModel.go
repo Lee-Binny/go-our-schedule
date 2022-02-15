@@ -15,7 +15,7 @@ type User struct {
 	CreatedAt time.Time `json:"-" gorm:"autoCreateTime"`
 	UpdatedAt time.Time `json:"-" gorm:"autoUpdateTime"`
 
-	Member   []Member   `gorm:"foreignkey:UserId;references:Id"`
+	Member   []Member   `json:"-" gorm:"foreignkey:UserId;references:Id"`
 }
 
 func NewUser(dto *dto.SignUpUserDto) *User {

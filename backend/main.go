@@ -34,11 +34,11 @@ func main()  {
 
 	group := r.Group("/group")
 	{
-		group.GET("/", ) // 전체 그룹 조회
-		group.GET("/:id", ) // id로 그룹 조회
-		group.POST("/", ) // 그룹 생성
-		group.PUT("/", ) // 그룹 정보 수정
-		group.DELETE("/") // 그룹 삭제
+		group.GET("/", controllers.GetAllMyGroups) // 내가 속한 전체 그룹 조회
+		group.GET("/:name", controllers.GetGroupByName) // name으로 그룹 조회
+		group.POST("/", controllers.CreateGroup) // 그룹 생성
+		group.PUT("/", controllers.UpdateGroup) // 그룹 정보 수정
+		group.DELETE("/:id", controllers.DeleteGroup) // 그룹 삭제
 	}
 	
 	r.Run()

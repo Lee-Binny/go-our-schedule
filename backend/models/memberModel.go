@@ -2,6 +2,12 @@ package models
 
 import "time"
 
+const (
+	GRADE_MASTER = iota
+	GRADE_ADMIN
+	GRAGE_NORMAL
+)
+
 type Member struct {
 	GroupId   int64     `json:"group_id" gorm:"primaryKey"`
 	UserId    int64     `json:"user_id" gorm:"primaryKey"`
@@ -10,5 +16,14 @@ type Member struct {
 	CreatedAt time.Time `json:"-" gorm:"autoCreateTime"`
 	UpdatedAt time.Time `json:"-" gorm:"autoUpdateTime"`
 
-	Schedule []Schedule `gorm:"foreignkey:GroupId, UserId;references:GroupId, UserId"`
+	Schedule []Schedule `json:"-" gorm:"foreignkey:GroupId, UserId;references:GroupId, UserId"`
+}
+
+func CreateMaster(groupId, userId int64, color string) *Member {
+	return &Member{
+		GroupId:   groupId,
+		UserId:    userId,
+		Grade:     GRADE_MASTER,
+		Color:     color,
+	}
 }
